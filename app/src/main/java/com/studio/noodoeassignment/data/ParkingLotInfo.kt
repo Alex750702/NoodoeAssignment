@@ -54,10 +54,10 @@ data class ParkInfo(
     var serviceTime: String? = null,
     var tw97x: String? = null,
     var tw97y: String? = null,
-    var totalcar: Int = 0,
-    var totalmotor: Int = 0,
-    var totalbike: Int = 0,
-    var totalbus: Int = 0,
+    var totalcar: String? = null,
+    var totalmotor: String? = null,
+    var totalbike: String? = null,
+    var totalbus: String? = null,
 
     @SerializedName("Pregnancy_First")
     var pregnancy_First: String? = null,

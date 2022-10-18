@@ -9,8 +9,8 @@ import com.studio.noodoeassignment.retrrofit.ParkingLotFetcher
 class ParkingLotRepository(private val iFetchApi: IFetchAPI) {
 
     interface IFetchAPI {
-        fun onUpdatePark(dataSource: ArrayList<ParkInfo>)
-        fun onUpdateStatus(dataSource: ArrayList<ParkStatus>)
+        fun onUpdateParkInfo(dataSource: ArrayList<ParkInfo>)
+        fun onUpdateParkStatus(dataSource: ArrayList<ParkStatus>)
         fun onError(message: String)
     }
 
@@ -32,7 +32,7 @@ class ParkingLotRepository(private val iFetchApi: IFetchAPI) {
                     parkInfo.add(temp)
                 }
 
-                iFetchApi.onUpdatePark(parkInfo)
+                iFetchApi.onUpdateParkInfo(parkInfo)
             } else {
                 iFetchApi.onError("Error+ ${response.errorBody().toString()}")
             }
@@ -55,7 +55,7 @@ class ParkingLotRepository(private val iFetchApi: IFetchAPI) {
                 for (temp in status) {
                     parkStatus.add(temp)
                 }
-                iFetchApi.onUpdateStatus(parkStatus)
+                iFetchApi.onUpdateParkStatus(parkStatus)
             } else {
                 iFetchApi.onError("Error+ ${response.errorBody().toString()}")
             }

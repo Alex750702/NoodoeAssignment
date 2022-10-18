@@ -9,6 +9,8 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.studio.noodoeassignment.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -24,6 +26,7 @@ private const val ARG_PARAM2 = "param2"
 class ParkingLotListFragment : Fragment() {
 
     private lateinit var viewModel: ParkingLotViewModel
+    private val adapter = ParkAdapter()
 
 
     // TODO: Rename and change types of parameters
@@ -38,11 +41,10 @@ class ParkingLotListFragment : Fragment() {
         }
 
         viewModel = ViewModelProvider(this).get(ParkingLotViewModel::class.java)
-        viewModel.getParkInfo().observe(this) {
+        viewModel.getParkInfoUIList().observe(this) {
             Log.d("AlexTest", "getParkInfo Done = ${it.size}")
-        }
-        viewModel.getParkStatus().observe(this) {
-            Log.d("AlexTest", "getParkStatus Done = ${it.size}")
+
+            adapter.setPark(it)
         }
     }
 
@@ -61,6 +63,13 @@ class ParkingLotListFragment : Fragment() {
         btn.setOnClickListener {
             findNavController().navigate(R.id.timeZoneFragment)
         }
+
+
+        val layoutManager = LinearLayoutManager(context)
+        layoutManager.orientation = LinearLayoutManager.VERTICAL
+        val dataList = view.findViewById<RecyclerView>(R.id.rvPark)
+        dataList.layoutManager = layoutManager
+        dataList.adapter = adapter
     }
 
     companion object {

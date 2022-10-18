@@ -17,9 +17,9 @@ data class ChargeStation(
 
 data class ParkStatus(
     var id: String? = null,
-    var availablecar: Int = 0,
-    var availablemotor: Int = 0,
-    var availablebus: Int = 0,
+    var availablecar: Int? = 0,
+    var availablemotor: Int? = 0,
+    var availablebus: Int? = 0,
 
     @SerializedName("ChargeStation")
     var chargeStation: ChargeStation? = null
