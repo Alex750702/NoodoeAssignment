@@ -1,42 +1,39 @@
 package com.studio.noodoeassignment.login
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.studio.noodoeassignment.data.GeneralResponse
 import com.studio.noodoeassignment.data.LogInRequest
+import com.studio.noodoeassignment.data.LogInResponse
 import com.studio.noodoeassignment.retrrofit.LonInFetcher
 import kotlinx.coroutines.launch
 
 class LogInViewModel : ViewModel() {
 
-    private var logInResult = MutableLiveData<GeneralResponse>()
-    fun getLogInResult(): LiveData<GeneralResponse> {
+    private var logInResult = MutableLiveData<LogInResponse>()
+    fun getLogInResult(): LiveData<LogInResponse> {
         return logInResult
+    }
+
+    private var errorMessage = MutableLiveData<String>()
+    fun getErrorMessage(): LiveData<String> {
+        return errorMessage
     }
 
     fun fnLogIn(logInRequest: LogInRequest) {
         viewModelScope.launch {
-            Log.d("AlexTest", "logInRequest = ${logInRequest}")
-            val coroutineApiFetcher = LonInFetcher()
+            val apiFetcher = LonInFetcher()
             try {
-                val response = coroutineApiFetcher.fnLogIn(logInRequest)
+                val response = apiFetcher.fnLogIn(logInRequest)
                 if (response.isSuccessful) {
                     val body = response.body()
-                    Log.d("AlexTest", "Coroutine succeed, body = ${body}")
-                    logInResult.postValue(GeneralResponse(true, ""))
+                    logInResult.postValue(body!!)
                 } else {
-                    logInResult.postValue(GeneralResponse(false, response.errorBody().toString()))
-                    Log.d(
-                        "AlexTest",
-                        "API Error, ${response.errorBody().toString()}"
-                    )
+                    errorMessage.postValue(response.errorBody().toString())
                 }
             } catch (ex: Exception) {
-                Log.d("AlexTest", "APi Exception, ${ex}")
-                logInResult.postValue(GeneralResponse(false, ex.toString()))
+                errorMessage.postValue(ex.toString())
             }
         }
     }

@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.studio.noodoeassignment.R
 import com.studio.noodoeassignment.data.LogInRequest
 
+
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -44,11 +45,10 @@ class LogInFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(LogInViewModel::class.java)
         viewModel.getLogInResult().observe(this) {
-            if (it.isSuccess) {
-                findNavController().navigate(R.id.parkingLotListFragment)
-            } else {
-                tvError.text = it.errorMessage
-            }
+            findNavController().navigate(R.id.parkingLotListFragment)
+        }
+        viewModel.getErrorMessage().observe(this) {
+            tvError.text = it
         }
     }
 
