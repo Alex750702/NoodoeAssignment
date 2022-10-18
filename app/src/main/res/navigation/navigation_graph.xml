@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/logInFragment">
+    app:startDestination="@id/parkingLotListFragment">
 
     <fragment
         android:id="@+id/logInFragment"
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/parkingLotListFragment"
-        android:name="com.studio.noodoeassignment.ParkingLotListFragment"
+        android:name="com.studio.noodoeassignment.parkinglot.ParkingLotListFragment"
         android:label="fragment_parking_lot_list"
         tools:layout="@layout/fragment_parking_lot_list">
         <action
