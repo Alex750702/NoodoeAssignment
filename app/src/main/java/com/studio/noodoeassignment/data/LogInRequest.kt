@@ -1,4 +1,4 @@
-package com.studio.noodoeassignment.retrrofit
+package com.studio.noodoeassignment.data
 
 data class LogInRequest(
     var username: String = "",

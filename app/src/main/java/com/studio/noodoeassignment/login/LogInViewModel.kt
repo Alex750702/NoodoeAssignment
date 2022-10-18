@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.studio.noodoeassignment.retrrofit.GeneralResponse
-import com.studio.noodoeassignment.retrrofit.LogInRequest
+import com.studio.noodoeassignment.data.GeneralResponse
+import com.studio.noodoeassignment.data.LogInRequest
 import com.studio.noodoeassignment.retrrofit.LonInFetcher
 import kotlinx.coroutines.launch
 

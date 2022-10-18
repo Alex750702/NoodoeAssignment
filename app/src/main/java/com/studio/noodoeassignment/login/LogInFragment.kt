@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.studio.noodoeassignment.R
-import com.studio.noodoeassignment.retrrofit.LogInRequest
+import com.studio.noodoeassignment.data.LogInRequest
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

@@ -1,6 +1,7 @@
 package com.studio.noodoeassignment.retrrofit
 
 import android.util.Log
+import com.studio.noodoeassignment.data.LogInRequest
 import com.studio.noodoeassignment.data.LogInResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

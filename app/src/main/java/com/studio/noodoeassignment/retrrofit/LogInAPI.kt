@@ -1,5 +1,6 @@
 package com.studio.noodoeassignment.retrrofit
 
+import com.studio.noodoeassignment.data.LogInRequest
 import com.studio.noodoeassignment.data.LogInResponse
 import retrofit2.Response
 import retrofit2.http.Body
