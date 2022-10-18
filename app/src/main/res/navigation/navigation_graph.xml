@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/logInFragment">
+
+    <fragment
+        android:id="@+id/logInFragment"
+        android:name="com.studio.noodoeassignment.LogInFragment"
+        android:label="fragment_log_in"
+        tools:layout="@layout/fragment_log_in">
+        <action
+            android:id="@+id/action_logInFragment_to_parkingLotListFragment"
+            app:destination="@id/parkingLotListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/parkingLotListFragment"
+        android:name="com.studio.noodoeassignment.ParkingLotListFragment"
+        android:label="fragment_parking_lot_list"
+        tools:layout="@layout/fragment_parking_lot_list">
+        <action
+            android:id="@+id/action_parkingLotListFragment_to_timeZoneFragment"
+            app:destination="@id/timeZoneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/timeZoneFragment"
+        android:name="com.studio.noodoeassignment.TimeZoneFragment"
+        android:label="fragment_time_zone"
+        tools:layout="@layout/fragment_time_zone">
+        <action
+            android:id="@+id/action_timeZoneFragment_to_parkingLotListFragment"
+            app:destination="@id/parkingLotListFragment" />
+    </fragment>
+</navigation>
