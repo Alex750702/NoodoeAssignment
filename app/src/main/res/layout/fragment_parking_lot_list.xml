@@ -19,10 +19,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cbParkContainCharger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="只顯示有充電站停車場" />
 
                 <Button
                     android:id="@+id/btnNext"
@@ -32,7 +38,7 @@
                     android:text="Time Zone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.Toolbar>
 
 

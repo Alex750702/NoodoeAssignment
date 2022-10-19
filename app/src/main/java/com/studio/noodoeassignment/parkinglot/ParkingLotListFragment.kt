@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.CheckBox
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.studio.noodoeassignment.R
+import com.studio.noodoeassignment.data.ParkInfoUI
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,6 +29,7 @@ class ParkingLotListFragment : Fragment() {
     private lateinit var viewModel: ParkingLotViewModel
     private val adapter = ParkAdapter()
 
+    private var mapHasCharger = mapOf<String, ParkInfoUI>()
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -56,6 +59,19 @@ class ParkingLotListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val cbParkContainCharger = view.findViewById<CheckBox>(R.id.cbParkContainCharger)
+        cbParkContainCharger.setOnCheckedChangeListener { p0, p1 ->
+
+            if (p1) {
+                mapHasCharger = viewModel.getParkInfoUIList().value!!.filter {
+                    it.value.chargeStationCharging.isNotEmpty() ||
+                            it.value.chargeStationIdle.isNotEmpty()
+                }
+                adapter.setPark(mapHasCharger)
+            } else {
+                adapter.setPark(viewModel.getParkInfoUIList().value!!.toMap())
+            }
+        }
         val btn = view.findViewById<Button>(R.id.btnNext)
         btn.setOnClickListener {
             findNavController().navigate(R.id.timeZoneFragment)
