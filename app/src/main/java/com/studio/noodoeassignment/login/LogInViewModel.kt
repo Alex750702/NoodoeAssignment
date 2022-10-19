@@ -21,11 +21,11 @@ class LogInViewModel : ViewModel() {
         return errorMessage
     }
 
-    fun fnLogIn(logInRequest: LogInRequest) {
+    fun logIn(logInRequest: LogInRequest) {
         viewModelScope.launch {
             val apiFetcher = LonInFetcher()
             try {
-                val response = apiFetcher.fnLogIn(logInRequest)
+                val response = apiFetcher.logIn(logInRequest)
                 if (response.isSuccessful) {
                     val body = response.body()
                     logInResult.postValue(body!!)

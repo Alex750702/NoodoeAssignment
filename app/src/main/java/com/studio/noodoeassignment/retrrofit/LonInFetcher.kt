@@ -28,10 +28,10 @@ class LonInFetcher {
             .addInterceptor(logging)
             .build()
 
-        fnSetRetrofit()
+        setRetrofit()
     }
 
-    private fun fnSetRetrofit() {
+    private fun setRetrofit() {
         val retrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
@@ -41,7 +41,7 @@ class LonInFetcher {
         retrofitApi = retrofit.create(LogInAPI::class.java)
     }
 
-    suspend fun fnLogIn(
+    suspend fun logIn(
         request: LogInRequest
     ): Response<LogInResponse> {
         return retrofitApi.login(request)

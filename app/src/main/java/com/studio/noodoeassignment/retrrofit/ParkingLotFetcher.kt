@@ -27,10 +27,10 @@ class ParkingLotFetcher {
             .addInterceptor(logging)
             .build()
 
-        fnSetRetrofit()
+        setRetrofit()
     }
 
-    private fun fnSetRetrofit() {
+    private fun setRetrofit() {
         val retrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
@@ -40,11 +40,11 @@ class ParkingLotFetcher {
         retrofitApi = retrofit.create(ParkingLotAPI::class.java)
     }
 
-    suspend fun fnGetParkingLot(): Response<JsonObject> {
+    suspend fun getParkingLot(): Response<JsonObject> {
         return retrofitApi.getParkInfo()
     }
 
-    suspend fun fnGetParkingLotStatus(): Response<JsonObject> {
+    suspend fun getParkingLotStatus(): Response<JsonObject> {
         return retrofitApi.getParkStatus()
     }
 }

@@ -20,7 +20,7 @@ class ParkingLotRepository(private val iFetchApi: IFetchAPI) {
     suspend fun getParkInfo() {
         val coroutineApiFetcher = ParkingLotFetcher()
         try {
-            val response = coroutineApiFetcher.fnGetParkingLot()
+            val response = coroutineApiFetcher.getParkingLot()
             if (response.isSuccessful) {
                 val body = response.body()!!
                 val parkJsonArray = body.getAsJsonObject("data").getAsJsonArray("park")
@@ -45,7 +45,7 @@ class ParkingLotRepository(private val iFetchApi: IFetchAPI) {
     suspend fun getParkStatus() {
         val coroutineApiFetcher = ParkingLotFetcher()
         try {
-            val response = coroutineApiFetcher.fnGetParkingLotStatus()
+            val response = coroutineApiFetcher.getParkingLotStatus()
             if (response.isSuccessful) {
                 val body = response.body()!!
                 val statusJsonArray = body.getAsJsonObject("data").getAsJsonArray("park")

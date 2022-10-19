@@ -66,8 +66,8 @@ class LogInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         tvError = view.findViewById(R.id.tvError)
-        val btn = view.findViewById<Button>(R.id.btnLogIn)
-        btn.setOnClickListener {
+        val btnLogIn = view.findViewById<Button>(R.id.btnLogIn)
+        btnLogIn.setOnClickListener {
 
             val userName = view.findViewById<EditText>(R.id.etUserName)
             val passWord = view.findViewById<EditText>(R.id.etPassWord)
@@ -76,7 +76,7 @@ class LogInFragment : Fragment() {
             logInRequest.password = passWord.text.toString()
             logInRequest.username = userName.text.toString()
 
-            viewModel.fnLogIn(logInRequest)
+            viewModel.logIn(logInRequest)
         }
     }
 
