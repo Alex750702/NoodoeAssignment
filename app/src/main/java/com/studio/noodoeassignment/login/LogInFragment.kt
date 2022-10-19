@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.studio.noodoeassignment.MainActivity
 import com.studio.noodoeassignment.R
 import com.studio.noodoeassignment.data.LogInRequest
+import com.studio.noodoeassignment.util.LogInValidator
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -72,11 +73,16 @@ class LogInFragment : Fragment() {
             val userName = view.findViewById<EditText>(R.id.etUserName)
             val passWord = view.findViewById<EditText>(R.id.etPassWord)
 
-            val logInRequest = LogInRequest()
-            logInRequest.password = passWord.text.toString()
-            logInRequest.username = userName.text.toString()
+            val isValid = LogInValidator.isEmailValid(userName.text.toString())
+            if (isValid) {
+                val logInRequest = LogInRequest()
+                logInRequest.password = passWord.text.toString()
+                logInRequest.username = userName.text.toString()
 
-            viewModel.logIn(logInRequest)
+                viewModel.logIn(logInRequest)
+            } else {
+                tvError.text = "Wong email format"
+            }
         }
     }
 
