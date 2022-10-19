@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/parkingLotListFragment">
+    app:startDestination="@id/logInFragment">
 
     <fragment
         android:id="@+id/logInFragment"
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/timeZoneFragment"
-        android:name="com.studio.noodoeassignment.TimeZoneFragment"
+        android:name="com.studio.noodoeassignment.timezone.TimeZoneFragment"
         android:label="fragment_time_zone"
         tools:layout="@layout/fragment_time_zone">
         <action

@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.studio.noodoeassignment.MainActivity
 import com.studio.noodoeassignment.R
 import com.studio.noodoeassignment.data.LogInRequest
 
@@ -45,6 +46,7 @@ class LogInFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(LogInViewModel::class.java)
         viewModel.getLogInResult().observe(this) {
+            (requireActivity() as MainActivity).userInfo = it
             findNavController().navigate(R.id.parkingLotListFragment)
         }
         viewModel.getErrorMessage().observe(this) {

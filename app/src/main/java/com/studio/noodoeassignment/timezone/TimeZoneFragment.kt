@@ -1,12 +1,18 @@
-package com.studio.noodoeassignment
+package com.studio.noodoeassignment.timezone
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.studio.noodoeassignment.MainActivity
+import com.studio.noodoeassignment.R
+import com.studio.noodoeassignment.data.LogInResponse
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,6 +25,13 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class TimeZoneFragment : Fragment() {
+
+    lateinit var userInfo: LogInResponse
+    lateinit var rgTimeZoneContainer: RadioGroup
+    lateinit var tvUserEmail: TextView
+    lateinit var tvUserTimeZone: TextView
+    lateinit var tvChangeTimeZone: TextView
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -41,6 +54,23 @@ class TimeZoneFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        rgTimeZoneContainer = view.findViewById(R.id.rgTimeZoneContainer)
+        tvUserEmail = view.findViewById(R.id.tvUserEmail)
+        tvUserTimeZone = view.findViewById(R.id.tvUserTimeZone)
+        tvChangeTimeZone = view.findViewById(R.id.tvChangeTimeZone)
+
+
+        rgTimeZoneContainer.setOnCheckedChangeListener { radioGroup: RadioGroup, id: Int ->
+            val checkedRadioButtonId = radioGroup.checkedRadioButtonId
+            val rbSelected = view.findViewById<RadioButton>(checkedRadioButtonId)
+            userInfo.timezone = rbSelected.text.toString()
+        }
+
+        userInfo = (requireActivity() as MainActivity).userInfo
+        tvUserEmail.text = userInfo.name
+        val userTimeZone = "Time zone = ${userInfo.timezone}"
+        tvUserTimeZone.text = userTimeZone
 
         val btn = view.findViewById<Button>(R.id.btnNext)
         btn.setOnClickListener {
