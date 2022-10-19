@@ -1,7 +1,6 @@
 package com.studio.noodoeassignment.parkinglot
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,8 +41,6 @@ class ParkingLotListFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(ParkingLotViewModel::class.java)
         viewModel.getParkInfoUIList().observe(this) {
-            Log.d("AlexTest", "getParkInfo Done = ${it.size}")
-
             adapter.setPark(it)
         }
     }

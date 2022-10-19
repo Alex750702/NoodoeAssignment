@@ -1,6 +1,5 @@
 package com.studio.noodoeassignment.parkinglot
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -65,14 +64,12 @@ class ParkingLotViewModel : ViewModel() {
                             it[temp.id!!]!!.chargeStationCharging = "充電中總數 : ${charging}"
                             it[temp.id!!]!!.chargeStationIdle = "待機中總數: ${idle}"
                         }
-
                     }
                 }
                 parkInfoUIList.postValue(map)
             }
 
             override fun onError(message: String) {
-                Log.d("AlexTest", "error = $message")
             }
         })
 
